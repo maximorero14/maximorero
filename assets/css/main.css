@@ -335,7 +335,7 @@ input, select, textarea {
 				border-left: 0;
 				border-right: 0;
 				left: -3em;
-				width: calc(100% + (3em * 2));
+				position: initial;
 			}
 
 				.post > header {
