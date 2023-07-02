@@ -6,6 +6,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="icon" href="images/icono.ico" type="image/x-icon">
+		<link rel="stylesheet" href="assets/css/prism.css" />
+    	<script src="assets/js/prism.js"></script>
 	</head>
 	<body class="is-preload">
 		<!-- Header -->
@@ -20,7 +22,7 @@
 
 			
 			<section>
-				<center><h1>Fluent Bit, Grafana, and Loki Integration in AWS ECS: Enhancing Container Observability</h1></center>
+				<center><h1>[FLG] Fluent Bit, Grafana, and Loki Integration in AWS ECS: Enhancing Container Observability</h1></center>
 				<br>
 				<div class="box alt">
 					<div class="row gtr-50 gtr-uniform">
@@ -44,7 +46,7 @@
 					<li>Launch EC2</li>
 					<li>Install Docker and Docker Compose. Code here
 						<pre>
-						<code>
+						<code class="language-bash">
 #!/bin/bash
 
 sudo yum update -y 
@@ -65,7 +67,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 					</li>
 					<li>Copy docker compose file. Code here
 						<pre>
-							<code>
+							<code class="language-yaml">
 version: "3.9"
 
 services:
@@ -87,11 +89,25 @@ volumes:
 						</pre>
 					</li>
 					<li>Run docker-compose
-						<pre><code>
+						<pre><code class="language-bash">
 sudo docker-compose up --build
 						</code></pre>
 					</li>
+					<li>
+						Create or select an existing security group that allows inbound connections to Grafana and Loki ports,ports are 3000 for Grafana and 80 for Loki.
+					</li>
 				</ol>
+				<h4>Step 1: Create ECR app and fluent-bit</h4>
+				<br>
+				<ol>
+					<li>
+						Java log app code here.
+					</li>
+					<li>
+						Fluent-bit code here
+					</li>
+				</ol>
+				
 			</section>
 
 
