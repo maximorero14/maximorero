@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Maximiliano Morero</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" href="images/icono.ico" type="image/x-icon">
+	</head>
+	<body class="is-preload">
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+				<a class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
+				<h1><strong>Maximiliano Morero</strong> </h1> </br>Software Engineer | AWS Certified Developer and Solution Architect | Java | Golang | Python | Backend developer
+			</div>
+		</header>
+		<!-- Main -->
+		<div id="main">
+
+			
+			<section>
+				<center><h1>Fluent Bit, Grafana, and Loki Integration in AWS ECS: Enhancing Container Observability</h1></center>
+				<br>
+				<div class="box alt">
+					<div class="row gtr-50 gtr-uniform">
+						<div class="col-12"><span class="image fit"><img src="blog/fluentbit_loki_grafana/front.png" alt="" /></span></div>
+					</div>
+				</div>
+				<h3>Introduction:</h3>
+				<br>
+				<p>In today's containerized environments, monitoring and understanding the behavior of your applications is crucial. AWS ECS (Elastic Container Service) provides a scalable and managed platform for running containerized applications. However, to gain valuable insights and effectively troubleshoot issues, you need robust observability solutions.</p>
+				<br>
+				<p>In this article, we will explore the integration of Fluent Bit, Grafana, and Loki in AWS ECS to empower container observability. Fluent Bit acts as a lightweight log collector, Grafana offers powerful visualization capabilities, and Loki provides a scalable and cost-effective log aggregation system. Together, these tools create a comprehensive solution for monitoring and analyzing containerized applications in real-time.</p>
+				<br>
+				<h3>Section 0: Setting up Grafana and Loki on an EC2 Instance:</h3>
+				<br>
+				<p>Let's dive into the setup of Grafana and Loki on an EC2 instance. Grafana will play the role of a powerful visualization tool, while Loki will serve as the go-to solution for log aggregation. By combining these two tools, you'll gain enhanced visibility and insights into your system's logs and metrics. So, let's explore how to bring Grafana and Loki to life on your EC2 instance.</p>
+				<br>
+				<h4>Step 0: Launch an EC2 Instance</h4>
+				<br>
+				<p></p>
+				<ol>
+					<li>Launch EC2</li>
+					<li>Install Docker and Docker Compose. Code here
+						<pre>
+						<code>
+#!/bin/bash
+
+sudo yum update -y 
+
+sudo yum install -y docker 
+
+sudo systemctl start docker
+
+sudo usermod -a -G docker ec2-user 
+
+sudo yum update -y && sudo yum install -y libxcrypt-compat
+
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+						</code>
+						</pre>
+					</li>
+					<li>Copy docker compose file. Code here
+						<pre>
+							<code>
+version: "3.9"
+
+services:
+	grafana:
+	image: "grafana/grafana:latest"
+	ports:
+		- "3000:3000"
+	volumes:
+		- ./provisioning:/etc/grafana/provisioning
+
+	loki:
+	image: "grafana/loki:latest"
+	ports:
+		- "80:3100"
+
+volumes:
+	logs_dir:
+							</code>
+						</pre>
+					</li>
+					<li>Run docker-compose
+						<pre><code>
+sudo docker-compose up --build
+						</code></pre>
+					</li>
+				</ol>
+			</section>
+
+
+
+		</div>
+
+	<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<ul class="icons">
+					<li><a href="https://github.com/maximorero14" class="icon brands fa-github"><span class="label">github</span></a></li>
+					<li><a href="mailto:maximorero14@gmail.com" class="icon solid fa-envelope"><span class="label">mail</span></a></li>
+					<li><a href="https://www.linkedin.com/in/maximorero14" class="icon brands fa-linkedin" ><span class="label">linkedin</span></a></li>
+					<li><a href="https://medium.com/@maximorero14" class="icon brands fa-medium" ><span class="label">medium</span></a></li>
+					<li><a href="assets/MaximilianoMoreroCV.pdf" class="icon solid fa-file" ><span class="label">cv</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; 2023</li></li>
+				</ul>
+			</div>
+		</footer>
+
+	<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.poptrox.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
